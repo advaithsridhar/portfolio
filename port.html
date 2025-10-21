@@ -1,0 +1,770 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Advaith H S — Portfolio</title>
+    <style>
+        :root {
+            --bg-1: #071026;
+            --bg-2: #0b1220;
+            --card: rgba(11, 18, 32, 0.92);
+            --text: #e6eef6;
+            --muted: #9aa6b2;
+            --accent-1: #0ea5e9;
+            --accent-2: #38bdf8;
+            --glass: rgba(255, 255, 255, 0.03);
+            --radius: 12px;
+            --shadow: 0 16px 40px rgba(2, 6, 23, 0.6);
+        }
+
+        :root[data-theme="light"] {
+            --bg-1: #f8f7f4;
+            --bg-2: #f8f7f4;
+            --card: #ffffff;
+            --text: #1a1a1a;
+            --muted: #5f6368;
+            --accent-1: #2563eb;
+            --accent-2: #60a5fa;
+            --glass: rgba(10, 10, 10, 0.03);
+            --shadow: 0 10px 24px rgba(18, 24, 40, 0.06);
+        }
+
+        :root[data-theme="grey"] {
+            --bg-1: #3d4045;
+            --bg-2: rgba(88, 93, 99);
+            --card: #3d4045;
+            --text: #e6eef6;
+            --muted: #9aa6b2;
+            --accent-1: #0ea5e9;
+            --accent-2: #38bdf8;
+            --glass: rgba(255, 255, 255, 0.03);
+            --radius: 12px;
+            --shadow: 0 16px 40px rgba(2, 6, 23, 0.6);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Inter, system-ui, Segoe UI, Roboto, Arial;
+            line-height: 1.45;
+            padding: 32px;
+            background: linear-gradient(180deg, var(--bg-1) 0%, var(--bg-2) 60%);
+            color: var(--text);
+            transition: background .25s, color .25s;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 340px 1fr;
+            gap: 28px;
+            align-items: start;
+        }
+
+        @media(max-width:920px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 0 18px;
+            }
+        }
+
+        .card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        /* ✨ Fade-in Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .photo {
+            height: 220px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(56, 189, 248, 0.08), rgba(14, 165, 233, 0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 42px;
+            color: var(--text);
+        }
+
+        .name {
+            font-weight: 700;
+            font-size: 18px;
+            margin-top: 12px;
+        }
+
+        .role {
+            color: var(--muted);
+            margin-top: 6px;
+            font-size: 13px;
+        }
+
+        .chip {
+            background: var(--glass);
+            padding: 8px;
+            border-radius: 9px;
+            font-size: 13px;
+            color: var(--muted);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+
+        @media(max-width:920px) {
+            .header {
+                flex-direction: column;
+            }
+        }
+
+        .intro h1 {
+            font-size: 28px;
+            margin-bottom: 6px;
+        }
+
+        .intro p {
+            color: var(--muted);
+            max-width: 70ch;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .btn {
+            background: linear-gradient(90deg, var(--accent-2), var(--accent-1));
+            color: #012028;
+            padding: 10px 14px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            box-shadow: 0 8px 26px rgba(14, 165, 233, 0.12);
+        }
+
+        .btn:hover {
+            transform: scale(1.15);
+
+        }
+
+        .ghost {
+            background: linear-gradient(90deg, var(--accent-2), var(--accent-1));
+            color: #012028;
+            padding: 10px 14px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            box-shadow: 0 8px 26px rgba(14, 165, 233, 0.12);
+        }
+
+        .ghost:hover {
+            transform: scale(1.15);
+        }
+
+        .section {
+            margin-top: 18px;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 8px 12px;
+            border-radius: 999px;
+            font-size: 13px;
+            color: var(--text);
+        }
+
+        .list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .item {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(255, 255, 255, 0.01));
+            padding: 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+        }
+
+        footer {
+            margin-top: 26px;
+            color: var(--muted);
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .modal-backdrop {
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(3, 6, 12, 0.6);
+            z-index: 9999;
+            padding: 20px;
+        }
+
+        .modal-backdrop.show {
+            display: flex;
+        }
+
+        .modal {
+            width: min(1100px, 92vw);
+            height: min(880px, 90vh);
+            background: var(--card);
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            position: relative;
+        }
+
+        .modal-head {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 12px 16px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            font-weight: 600;
+            position: relative;
+        }
+
+        .modal-body {
+            flex: 1;
+            overflow: auto;
+        }
+
+        .modal-body iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
+        .modal-icons {
+            position: absolute;
+            top: 12px;
+            right: 14px;
+            display: flex;
+            gap: 14px;
+        }
+
+        .modal-icons svg {
+            width: 22px;
+            height: 22px;
+            stroke: var(--text);
+            cursor: pointer;
+            transition: transform 0.2s, stroke 0.2s;
+        }
+
+        .modal-icons svg:hover {
+            transform: scale(1.2);
+            stroke: var(--accent-2);
+        }
+
+        .fab {
+            position: fixed;
+            right: 18px;
+            bottom: 18px;
+            width: 56px;
+            height: 56px;
+            border-radius: 999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 99999;
+            cursor: pointer;
+            background: linear-gradient(135deg, var(--accent-2), var(--accent-1));
+            color: #012028;
+            border: none;
+            box-shadow: 0 12px 30px rgba(14, 165, 233, 0.14);
+            font-size: 20px;
+        }
+
+        .fab:active {
+            transform: translateY(1px);
+        }
+
+        #Linkedin img {
+            transition: transform 0.2s;
+        }
+
+        #Linkedin:hover img {
+            transform: scale(1.2);
+        }
+
+        @media(max-width:600px) {
+            body {
+                padding: 16px;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .photo {
+                height: 160px;
+                font-size: 32px;
+            }
+
+            .intro h1 {
+                font-size: 22px;
+            }
+
+            .btn,
+            .ghost {
+                font-size: 14px;
+                padding: 8px 12px;
+            }
+
+            .skills {
+                gap: 6px;
+            }
+
+            .skill {
+                font-size: 12px;
+                padding: 6px 10px;
+            }
+
+            footer {
+                font-size: 12px;
+            }
+
+            .modal {
+                width: 95vw;
+                height: 85vh;
+            }
+
+            .modal-icons svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        /* Make Resume Modal Full-Screen on Mobile */
+        @media(max-width:600px) {
+            .modal {
+                width: 100vw;
+                height: 100vh;
+                border-radius: 0;
+                border: none;
+            }
+
+            .modal-head {
+                padding: 14px;
+                font-size: 16px;
+            }
+
+            .modal-icons {
+                top: 10px;
+                right: 12px;
+                gap: 12px;
+            }
+
+            .modal-body iframe {
+                height: calc(100vh - 60px);
+            }
+        }
+
+        #downloadResumeBtn:hover {
+            transform: scale(1.15);
+        }
+
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid var(--accent-2);
+
+        }
+
+        /* Back to Top button styling */
+        #backToTop {
+            position: fixed;
+            bottom: 90px;
+            right: 24px;
+            z-index: 9999;
+            background: linear-gradient(135deg, var(--accent-2), var(--accent-1));
+            color: #012028;
+            border: none;
+            outline: none;
+            width: 52px;
+            height: 52px;
+            border-radius: 999px;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(14, 165, 233, 0.25);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.2s ease;
+        }
+
+        #backToTop:hover {
+            transform: scale(1.1);
+        }
+
+        #backToTop.show {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <aside class="card">
+            <div class="photo">
+                <img src="WhatsApp Image 2025-10-21 at 7.06.21 PM.jpeg" alt="Advaith H S" class="profile-photo">
+            </div>
+            <div class="name">Advaith H S</div>
+            <div class="role">Computer Science &amp; Design Student</div>
+            <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px">
+                <div class="chip"><span>📍 Mysore, India</span></div>
+                <div class="chip">
+                    <span>✉️</span>
+                    <a href="mailto:hsadvaith@gmail.com"
+                        style="color:var(--accent-2);margin-left:6px;text-decoration:none;">
+                        hsadvaith@gmail.com
+                    </a>
+                </div>
+                <div class="chip">
+                    <span>📞</span>
+                    <a href="tel:+919901973409" style="color:var(--accent-2);margin-left:6px;text-decoration:none;">
+                        +91 9901973409
+                    </a>
+                </div>
+
+                <div class="chip"><span>LinkedIn</span><a href="https://www.linkedin.com/in/advaith-h-s-191562278/"
+                        target="_blank" style="color:var(--accent-2);margin-left:6px">/in/advaith-h-s-191562278/</a>
+                </div>
+            </div>
+        </aside>
+
+        <main>
+            <header class="header">
+                <div class="intro">
+                    <h1>Hi — I'm Advaith</h1>
+                    <p>Motivated and dedicated student with strong communication and interpersonal skills. Experienced
+                        in web development (HTML, CSS, JS, React) and game development with Unity.</p>
+                    <div class="actions">
+                        <button id="viewResumeBtn" class="btn">Resume</button>
+                        <button id="downloadResumeBtn" class="btn">⬇️ Download Resume</button>
+                        <button id="Linkedin" class="ghost">
+                            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg"
+                                alt="LinkedIn" style="width:18px;height:18px;margin-right:6px;vertical-align:middle;">
+                            LinkedIn
+                        </button>
+                    </div>
+
+                </div>
+            </header>
+
+            <section class="section">
+                <h3>Skills</h3>
+                <div class="skills" style="margin-top:10px">
+                    <div class="skill">HTML</div>
+                    <div class="skill">CSS</div>
+                    <div class="skill">JavaScript</div>
+                    <div class="skill">React</div>
+                    <div class="skill">Node.js</div>
+                    <div class="skill">MongoDB</div>
+                    <div class="skill">Unity (C#)</div>
+                    <div class="skill">C / C++ / Java / Python</div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h3>Projects</h3>
+                <div class="list" style="margin-top:10px">
+                    <div class="item">
+                        <h4>TaskForge — Project Management Tool <span class="meta">— 2025</span></h4>
+                        <div class="meta">MERN (MongoDB, Express, React, Node)</div>
+                        <div class="desc">Task tracking app with deadlines, priorities, team collaboration and
+                            authentication.</div>
+                    </div>
+                    <div class="item">
+                        <h4>Movie Explorer — Movie Search Web App <span class="meta">— 2025</span></h4>
+                        <div class="meta">HTML, JS, OMDb API</div>
+                        <div class="desc">Interactive movie search and filter app with dynamic modals and theme toggle.
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h3>Experience</h3>
+                <div class="list" style="margin-top:10px">
+                    <div class="item">
+                        <h4>Game Dev Intern — Savitar Technologies (Nov 2023)</h4>
+                        <div class="meta">Mysore, India</div>
+                    </div>
+                    <div class="item">
+                        <h4>IT Network &amp; Hardware Admin — ATPPL (Freelance)</h4>
+                        <div class="meta">Mysore, India</div>
+                    </div>
+                </div>
+            </section>
+            <section class="section">
+                <h3>Certifications</h3>
+                <div class="list" style="margin-top:10px">
+                    <div class="item">
+                        <h4>Complete JavaScript Course 2025</h4>
+                        <div class="meta">Udemy</div>
+                    </div>
+                    <div class="item">
+                        <h4>Web Development</h4>
+                        <div class="meta">Vault of Codes</div>
+                    </div>
+                    <div class="item">
+                        <h4>Java Programming</h4>
+                        <div class="meta">Vault of Codes</div>
+                    </div>
+                    <div class="item">
+                        <h4>Technical Workshop on Data Science at IIT Hyderabad</h4>
+                        <div class="meta">Remarkskill Education</div>
+                    </div>
+                    <div class="item">
+                        <h4>Introduction to LLMs</h4>
+                        <div class="meta">SimpliLearn</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                <h3>Education</h3>
+                <div class="list" style="margin-top:10px">
+                    <div class="item">
+                        <h4>B.E. Computer Science — Mysore University (2022–2026)</h4>
+                        <div class="meta">GPA: 9.18</div>
+                    </div>
+                    <div class="item">
+                        <h4>PUC — Sankalpa PU College (2022)</h4>
+                        <div class="meta">90.17%</div>
+                    </div>
+                </div>
+            </section>
+            <section class="section">
+                <h3>Hobbies & Interests</h3>
+                <div class="skills" style="margin-top:10px">
+                    <div class="skill"> Watching Movies</div>
+                    <div class="skill"> Playing & Watching Cricket</div>
+                    <div class="skill"> Travelling & Exploring new places</div>
+                    <div class="skill"> Game Development</div>
+                    <div class="skill"> Coding Projects</div>
+                </div>
+            </section>
+
+
+            <footer>
+                <div style="margin-top:18px;color:var(--muted)">© 2025 Advaith H S</div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Modal -->
+    <div id="resumeModal" class="modal-backdrop">
+        <div class="modal">
+            <div class="modal-head">
+                <div class="title">Advaith H S — Resume</div>
+                <div class="modal-icons">
+                    <!-- Open in new tab SVG -->
+                    <svg id="openNewTabTop" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M13.5 3H21m0 0v7.5m0-7.5L10 14.5M4 4h5a1 1 0 011 1v14a1 1 0 01-1 1H4a1 1 0 01-1-1V5a1 1 0 011-1z" />
+                    </svg>
+                    <!-- Close SVG -->
+                    <svg id="closeTop" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </div>
+            </div>
+            <div class="modal-body"><iframe id="resumeFrame" src="" title="Resume"></iframe></div>
+        </div>
+    </div>
+
+    <!-- FAB -->
+    <button id="themeFab" class="fab" aria-label="Switch theme">🌙</button>
+
+    <script>
+        const PDF_DATA_URI = "https://drive.google.com/file/d/1wtzys8G7PWLY5FktRFzycA0yJs11EXjE/preview"; // replace with your actual resume file
+
+        const modal = document.getElementById('resumeModal');
+        const resumeFrame = document.getElementById('resumeFrame');
+        const openBtn = document.getElementById('viewResumeBtn');
+        const closeTop = document.getElementById('closeTop');
+        const openNewTabTop = document.getElementById('openNewTabTop');
+        const themeFab = document.getElementById('themeFab');
+
+        openBtn.onclick = () => {
+            resumeFrame.src = PDF_DATA_URI;
+            modal.classList.add('show');
+        };
+
+        closeTop.onclick = () => {
+            modal.classList.remove('show');
+            resumeFrame.src = '';
+        };
+
+        openNewTabTop.onclick = () => {
+            window.open(PDF_DATA_URI, '_blank');
+        };
+
+        themeFab.onclick = () => {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+
+            if (currentTheme === 'light') {
+                html.setAttribute('data-theme', 'grey');
+                themeFab.textContent = '🌫️'; // grey theme icon
+            } else if (currentTheme === 'grey') {
+                html.setAttribute('data-theme', '');
+                themeFab.textContent = '🌙'; // dark theme icon
+            } else {
+                html.setAttribute('data-theme', 'light');
+                themeFab.textContent = '☀️'; // light theme icon
+            }
+        };
+
+
+        // Make LinkedIn button functional
+        const linkedinBtn = document.getElementById('Linkedin');
+        linkedinBtn.onclick = () => {
+            window.open('https://www.linkedin.com/in/advaith-h-s-191562278/', '_blank');
+        };
+
+        // Download Resume button functionality
+        const downloadBtn = document.getElementById('downloadResumeBtn');
+        downloadBtn.onclick = () => {
+            const resumeURL = "https://drive.google.com/uc?export=download&id=1wtzys8G7PWLY5FktRFzycA0yJs11EXjE";
+            const link = document.createElement('a');
+            link.href = resumeURL;
+            link.download = "Advaith_HS_Resume.pdf";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        };
+
+        // Toast message function
+        function showToast() {
+            const toast = document.getElementById("toast");
+            toast.style.opacity = "1";
+            toast.style.bottom = "50px";
+            setTimeout(() => {
+                toast.style.opacity = "0";
+                toast.style.bottom = "30px";
+            }, 2000);
+        }
+
+        // Modify download button to show toast
+        downloadBtn.onclick = () => {
+            const resumeURL = "https://drive.google.com/uc?export=download&id=1wtzys8G7PWLY5FktRFzycA0yJs11EXjE";
+            const link = document.createElement('a');
+            link.href = resumeURL;
+            link.download = "Advaith_HS_Resume.pdf";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showToast();
+        };
+        // 🌟 Fade-in effect for sections
+        const fadeElements = document.querySelectorAll('.section, .card, header, footer');
+
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        // Add fade-in class initially
+        fadeElements.forEach(el => {
+            el.classList.add('fade-in');
+            fadeObserver.observe(el);
+        });
+        // Back to Top button logic
+        const backToTopBtn = document.getElementById("backToTop");
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add("show");
+            } else {
+                backToTopBtn.classList.remove("show");
+            }
+        });
+
+        backToTopBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+
+
+    </script>
+    <div id="toast" style="
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--card);
+  color: var(--text);
+  padding: 12px 18px;
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  transition: opacity 0.4s ease, bottom 0.4s ease;
+  z-index: 999999;
+  font-size: 14px;
+  text-align: center;
+">
+        Resume Download Started 📄
+    </div>
+    <button id="backToTop" title="Go to top">⬆️</button>
+
+</body>
+
+</html>
