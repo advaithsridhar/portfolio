@@ -681,7 +681,7 @@ body.light-mode .nav-links a {
 }
 
 .timeline-item:nth-child(odd) .timeline-content {
-    text-align: center;
+    text-align: left;
 }
 
 .timeline-content h3 {
